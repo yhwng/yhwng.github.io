@@ -1,65 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Accessibility Errors Example</title>
-    <style>
-      .hidden {
-        display: none;
-      }
-      .opacity {
-        color: rgba(0, 0, 0, 0.5); /* Low contrast */
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Welcome to Our Website</h1>
-
-    <div class="hidden" aria-hidden="true">
-      This text is hidden but still has a role.
-    </div>
-    <!-- Error 1: Content is hidden but still part of the accessibility tree. -->
-
-    <img src="image.jpg" alt="" />
-    <!-- Error 2: Missing alt text for the image. -->
-
-    <button onclick="alert('Clicked!')">Click me</button>
-    <!-- Error 3: Button lacks a descriptive label for screen readers. -->
-
-    <a href="https://example.com" style="text-decoration: none"
-      >Visit our site</a
-    >
-    <!-- Error 4: Link text is not descriptive enough. -->
-
-    <div style="background-color: #fff">
-      <p class="opacity">Some text that is not very readable.</p>
-      <!-- Error 5: Insufficient contrast (less than 4.5:1) for text. -->
-    </div>
-
-    <div role="button" tabindex="0" onclick="doSomething()">Fake button</div>
-    <!-- Error 6: A div is used as a button without proper semantics. -->
-
-    <label for="input">Input:</label>
-    <input id="input" type="text" aria-required="true" />
-    <!-- Error 7: No indication that the input is required. -->
-
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
-    </nav>
-
-    <p>Find the navigation on the right.</p>
-    <!-- Error 8: Non-visual reference words; navigation is not identified visually. -->
-
-    <div aria-live="polite" style="display: none">
-      This message will be announced
-    </div>
-    <!-- Error 9: Content that is visually hidden but should be announced is not accessible. -->
-
-    <h2>More Information</h2>
-    <button onclick="alert('More info')">More info</button>
-    <!-- Error 10: Duplicate buttons with similar actions, causing confusion. -->
-  </body>
+<html>
+  <label>Username<input autocomplete="username" /></label>
+  <form autocomplete="off">
+    <label
+      >Birthday month
+      <select autocomplete="bday-month">
+        <option>January</option>
+        <option>...</option>
+      </select>
+    </label>
+  </form>
+  <label>
+    Street address<textarea autocomplete="Street-Address"></textarea>
+  </label>
+  <label>Work email<input autocomplete="work email" /></label>
+  <label
+    >Partner's email address<input autocomplete="section-partner email"
+  /></label>
+  <label>Username<input autocomplete="badname" /></label>
+  <label>Photo<input autocomplete="work photo" /></label>
+  <label>Email<input autocomplete="work shipping email" /></label>
+  <label>Email<input autocomplete="work,email" /></label>
+  <label
+    >Username<input role="banner" tabindex="0" autocomplete="banner"
+  /></label>
 </html>
